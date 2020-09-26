@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(68,125,199);
+            color: white;
+            font: normal 18pt Arial;
+        }
+    </style>
+</head>
+<body>
+    <h1 name='titulo1'>iniciando estudos com dom</h1>
+    <p class='oi'>aqui vai o resultado</p>
+    <p class='oi'>aprendendo a usar <strong>DOM</strong> em JavaScript</p>
+    <div id='div1'>clique em mim!</div>
+    <script>
+        /*window.document.write('Ola, Mundo!')
+        document.write(window.document.charset+'<br/>')
+        document.write(window.navigator.appName+'<br/>')
+        document.write(window.document.URL)*/
+        var p1= window.document.getElementsByTagName('p')[0] // primeiro paragrafo q aparecer no documento
+        window.document.write('Esta escrito assim: '+ p1.innerText)
+        p1.style.color= 'blue'
+        var corpo= window.document.body
+        corpo.style.background='black'
+        var d= window.document.getElementById('div1')
+        d.style.color='green'
+        var t= document.getElementsByName('titulo1')[0]
+        t.style.color='purple'
+        var s= document.querySelectorAll('.oi')[1] // seleciona o segundo elemento com a classe 'oi'
+        s.style.background='green'
+        var batata= document.querySelector('.oi') // seleciona o primeiro elemento com a classe 'oi'
+        batata.style.color='red'
+
+    </script>
+</body>
+</html>

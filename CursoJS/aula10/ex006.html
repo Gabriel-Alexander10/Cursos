@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div#area{
+            background-color: rgb(19, 177, 19);
+            color: white;
+            font: 18pt normal Arial;
+            display:block;
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            line-height: 200px; /* centralizar no eixo vertical */
+        }
+    </style>
+</head>
+
+<body>
+    <div id='area' onclick="clicar()" onmouseout="saiu()">Interaja...</div>
+    <script>
+        var a = window.document.querySelector('#area')
+        function clicar(){
+            a.innerText='clicou!'
+            a.style.background='red'
+        }
+        a.addEventListener('mouseenter', entrou) // eventListener , tambem serve para capturar eventos
+        // para não precisar colocar atributos no html usar event listeners caso queira
+        function entrou(){
+            a.innerText="entrou!"
+        }
+        function saiu(){
+            a.innerText='saiu!'
+            a.style.background='rgb(19, 177, 19)'
+        }
+    </script>
+</body>
+</html>

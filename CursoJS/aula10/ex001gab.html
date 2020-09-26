@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- fazer uma calculadora -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: rgb(2, 0, 26);
+            text-align: center;
+            align-items: center;
+            font: 15pt normal arial;
+        }
+        div{
+            background: rgb(218, 213, 213);
+            display:inline-block;
+            text-align: center;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+        }
+        div.numeros{
+            display:block;
+            word-spacing: -5px;
+            width: 300px;
+            height:max-content;
+            position: absolute;
+            top:25%;
+            left:40%;
+        }
+        div.operadores{
+            display:block;
+            word-spacing: -5px;
+            width:80px;
+            height:max-content;
+            position: absolute;
+            top:25%;
+            left:61.9%;
+            line-height: 0;
+        }
+        div.operadores div{
+            background: rgb(0, 102, 255);
+            height:80px;
+            width:80px;
+            line-height: 80px;
+        }
+        #apagar{
+            background: rgb(255, 0, 85);
+        }
+        div#resultado{
+            background: white;
+            width: 380px;
+            height:100px;
+            position:absolute;
+            top: 10%;
+            left:40%;
+        }
+    </style>
+</head>
+<body>
+    <div id="resultado"></div>
+    <div class="numeros">
+        <div class="numero" id='n7'>7</div>
+        <div class="numero" id='n8'>8</div>
+        <div class="numero" id='n9'>9</div>
+        <div class="numero" id='n4'>4</div>
+        <div class="numero" id='n5'>5</div>
+        <div class="numero" id='n6'>6</div>
+        <div class="numero" id='n1'>1</div>
+        <div class="numero" id='n2'>2</div>
+        <div class="numero" id='n3'>3</div>
+        <div class="numero" id='n0'>0</div>
+        <div class="operador" id="virgula">,</div>
+        <div id="calcular">=</div>
+    </div>
+    <div class='operadores'>
+        <div class="operador" id="apagar">X</div>
+        <div class="operador" id="somar">+</div> <br>
+        <div class="operador" id="subtrair">-</div>
+        <div class="operador" id="multiplicar">x</div>
+        <div class="operador" id="dividir">/</div>
+    </div>
+    <script>
+        var n1= document.querySelector('#n1')
+        n1.addEventListener('click',clicou)
+        var n2= document.querySelector('#n2')
+        n2.addEventListener('click',clicou)
+        var n3= document.querySelector('#n3')
+        n3.addEventListener('click',clicou)
+        var n4= document.querySelector('#n4')
+        n4.addEventListener('click',clicou)
+        var n5= document.querySelector('#n5')
+        n5.addEventListener('click',clicou)
+        var n6= document.querySelector('#n6')
+        n6.addEventListener('click',clicou)
+        var n7= document.querySelector('#n7')
+        n7.addEventListener('click',clicou)
+        var n8= document.querySelector('#n8')
+        n8.addEventListener('click',clicou)
+        var n9= document.querySelector('#n9')
+        n9.addEventListener('click',clicou)
+        var n0= document.querySelector('#n0')
+        n0.addEventListener('click',clicou)
+        function clicou(){
+            var numero = Number(this.innerText)
+            var tela= document.querySelector('#resultado')
+            tela.innerHTML=  tela.innerText+ numero
+        }
+        var operador_soma= document.querySelector('#somar')
+        var operador_sub= document.querySelector('#subtrair')
+        var operador_multiplicar= document.querySelector('#multiplicar')
+        var operador_dividir= document.querySelector('#dividir')
+        var operador_apagar= document.querySelector('#apagar')
+        var virgula = document.querySelector('#virgula')
+        operador_soma.addEventListener('click',clicou_op)
+        operador_sub.addEventListener('click',clicou_op)
+        operador_multiplicar.addEventListener('click',clicou_op)
+        operador_dividir.addEventListener('click',clicou_op)
+        virgula.addEventListener('click',clicou_op)
+        operador_apagar.addEventListener('click',clicou_apag)
+        function clicou_op(){
+            var op= this.innerText
+            var tela= document.querySelector('#resultado')
+            tela.innerHTML=  tela.innerText+ op
+        }
+        function clicou_apag(){
+            var tela= document.querySelector('#resultado')
+            tela.innerHTML= ''
+        }
+        var calcular= document.getElementById('calcular')
+        calcular.addEventListener('click',calcular_resultado)
+        function calcular_resultado(){
+            var tela= document.querySelector('#resultado')
+            var conta = tela.innerText.replace(',','.').replace('x','*')
+            tela.innerText = eval(conta) // avalia e realiza a expressão !!!
+        }
+        /*var todos = document.querySelectorAll('.numero')
+        console.log(todos)
+        todos.forEach(this,addEventListener('click', cl))
+        function cl(){
+            console.log(this)
+        }*/
+    </script>
+</body>
+</html>

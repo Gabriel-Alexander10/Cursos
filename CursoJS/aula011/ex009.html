@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Simulador de nacionalidade</h1>
+    <p style="display: inline-block;">
+        <span>Insira seu pais</span>
+    </p>
+    <form method="get" style="display: inline-block;">
+        <input type="text" name="txt" id="txt" style="display: inline-block;">
+    </form>
+    <button id="verificar" style="display: inline-block;">Verificar</button>
+    <div id="res">
+
+    </div>
+    <script>
+        var pais = window.document.querySelector('#txt')
+        var res= document.querySelector('#res')
+        var botao= document.querySelector('#verificar')
+        botao.addEventListener('click',clicar)
+        function clicar(){
+            var pais1 = pais.value
+            res.innerHTML =`<p>vivendo em <strong>${pais1}</strong></p>`
+            if (pais1.toLowerCase()=='brasil'){
+                res.innerHTML= res.innerHTML + '<p>Você é <strong>Brasileiro!</strong></p>'
+            } else{
+                res.innerHTML = res.innerHTML + '<p>Você é <strong>estrangeiro!</strong></p>'
+            }
+        }
+    </script>
+</body>
+</html>
