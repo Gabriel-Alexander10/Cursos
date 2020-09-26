@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <div id="root2" style='color:green'></div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+        const root = document.getElementById('root')
+        const root2 = document.getElementById('root2')
+
+        // diferença entre props e state: props são fixas, states não
+        class App12 extends React.Component {
+            constructor() {
+                super()
+                this.state = {
+                    nome: 'Gabriel',
+                }
+            }
+            render() {
+                // this.props.idade = 18 // não pode
+                this.state.nome = "João" // pode
+                this.state.snome = "Pedro" // também pode
+                console.log(this)
+                return (
+                    <div>
+                        <p>Nome: {this.state.nome} {this.state.snome} </p>
+                        <p>Idade: {this.props.idade}</p>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<App12 idade={17} />, root)
+        // states e props entre child e parents:
+        class Identificacao extends React.Component {
+            constructor() {
+                super()
+                this.state = {
+                    nome: 'Gabriel',
+                    idade: 17,
+                }
+            }
+            render() {
+                // consequentemente muda o valor da prop
+                this.state.idade = 18
+                return (
+                    <div>
+                        <Nome nome={this.state.nome} />
+                        <Idade idade={this.state.idade} />
+                    </div>
+                )
+            }
+        }
+        // filhos (Child) de Identificacao:
+        class Nome extends React.Component {
+            render() {
+                return (
+                    <p>
+                        Nome: {this.props.nome}
+                    </p>
+                )
+            }
+        }
+        class Idade extends React.Component {
+            render() {
+                return (
+                    <p>
+                        Idade: {this.props.idade}
+                    </p>
+                )
+            }
+        }
+
+        ReactDOM.render(<Identificacao />, root2)
+    </script>
+</body>
+
+</html>

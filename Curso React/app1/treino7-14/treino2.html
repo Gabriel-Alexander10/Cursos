@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Testes com while -->
+</head>
+<body>
+    <div id="root"></div>
+    <div id="root2"></div>
+    <div class="divs"></div>
+    <div class="divs"></div>
+    <div class="divs"></div>
+    <div class="divs"></div>
+    <div class="divs"></div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+        const root = document.querySelector("#root");
+        const root2 = document.querySelector("#root2");
+        const divs = document.querySelectorAll(".divs")
+        let L =[]
+        for (let c= 1; c<=10; c++){
+            L.push(c)
+        }
+        class Paragrafos extends React.Component {
+            render(){
+                return(
+                    <div>
+                        {this.props.p}
+                    </div>
+                )
+            }
+        }
+        for (let i=0; i<5; i++){
+            let k = <p>Paragrafo {L[i]}</p>
+            ReactDOM.render(<Paragrafos p={k} />,divs[i])
+        }
+        // outro jeito somente na root:
+        class Paragrafos2 extends React.Component {
+            render(){
+                let k = []
+                for (let i=1; i<=5; i++){
+                    k.push(`Paragráfo ${i} :)`)
+                }
+                return(
+                   k.map(c =><p> {c} </p> )
+                )
+            }
+        }
+        ///console.log(k)
+        ReactDOM.render(<Paragrafos2 />,root2)
+
+        // definindo props e states :
+        class CompA extends React.Component {
+            constructor(){
+                super()
+                this.state = {
+                    color: 'red',
+                }
+            }
+            render(){
+                let estilo = this.state
+                console.log(estilo)
+                return(
+                    <div>
+                        <CompB sty={estilo} />
+                    </div>
+                )
+            }
+        }
+        function CompB(props){
+            return (
+                <p style={props.sty}>oi</p>
+            )
+        }
+        ReactDOM.render(<CompA />,root)
+    </script>
+</body>
+</html>

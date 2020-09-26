@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 8 de React</title>
+    <style>
+        .red{
+            background-color: red;
+            color: white;
+            padding: 10px;
+        }
+        .green{
+            background-color: green;
+            color: white;
+            padding: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+        const root = document.getElementById('root')
+        // utilizar className para atribuir css em elementos criados a partir de jsx
+        class CompA extends React.Component {
+            render(){
+                return (
+                    <div className="red">
+                        <p>Olá Mundo do React</p>
+                    </div>
+                )
+            }
+        }
+        class CompB extends React.Component {
+            render(){
+                return (
+                    <div className="green">
+                        <p>Olá Mundo do React</p>
+                    </div>
+                )
+            }
+        }
+        class App extends React.Component {
+            render(){
+                return (
+                    <div>
+                        <CompA />
+                        <CompB />
+                    </div>
+                )
+            }
+        }
+
+
+        ReactDOM.render(<App />,root)
+    </script>
+</body>
+</html>

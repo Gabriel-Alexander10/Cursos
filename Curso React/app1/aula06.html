@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Básico</title>
+</head>
+
+<body>
+
+    <div id="root"></div>
+    <div id="r1"></div>
+    <div id="r2"></div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+    // importante colocar o type e importar o babel ali em cima para que o JSX funcione
+        const root = document.querySelector("#root")
+        const r1 = document.getElementById('r1')
+        const r2 = document.getElementById('r2')
+
+        // props
+        function CompA(props) {
+            return (
+                <div>
+                    <p>Olá, {props.nome}</p>
+                    </div>
+            )
+        }
+        ReactDOM.render(<CompA nome="Gabriel"/>,root) // colocar texto com variavel no html!!!
+
+        // o parametro n precisa de um nome específico
+        function CompB(batata){
+            return (
+                <div>
+                    <p>Eae, {batata.nome} {batata.snome}</p>
+                    </div>
+            )
+        }
+        ReactDOM.render(<CompB nome="Gabriel" snome='Mendes'/>,r1)
+
+        // com classe:
+        // tem que ser this.props.atributo em classes
+        class CompC extends React.Component {
+            render(){
+                return (
+                    <div>
+                        <p>Olá novamente, {this.props.nome} {this.props.snome}</p>
+                        </div>
+                )
+            }
+        }
+        ReactDOM.render(<CompC nome="Gabriel" snome='Mendes'/>,r2)
+    </script>
+    
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .vermelho{
+            color: red;
+        }
+        .tamanho{
+            font: 2em bolder;
+
+        }
+        .cor-fundo{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+    
+    class App extends React.Component {
+        render(){
+            let cor = this.props.cor ? 'vermelho': ''
+            let tamanho = this.props.tamanho ? 'tamanho': ''
+            let fundo = this.props.fundo ? 'cor-fundo': ''
+            return (
+                <div className ={`${cor} ${tamanho} ${fundo}`}>
+                    React
+                </div>
+            )
+        }
+    }
+    
+
+
+    ReactDOM.render(<App cor={true} tamanho = {true} fundo= {true}/>,document.getElementById('root'))
+    </script>
+</body>
+</html>

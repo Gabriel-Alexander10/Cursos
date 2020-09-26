@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+        const root = document.getElementById('root')
+        class Main extends React.Component {
+            constructor(props) {
+                super(props)
+                this.state = {
+                    nomeA: 'João',
+                    nomeB: 'Ana',
+                    nomeC: 'Pedro',
+                }
+            }
+
+            render(){
+                return(
+                    <div>
+                        <h1>Exercicio</h1>
+                        <hr/>
+                        <CompA nome = {this.state.nomeA} />
+                        <CompB nome={this.state.nomeB} />
+                        <CompC nome={this.state.nomeC} />
+                    </div>
+
+                )
+            }
+        }
+        class CompA extends React.Component {
+            constructor(props){
+                super(props)
+                // para usar props dentro do constructor tem que passa-lo como argumento
+                // nele e em super :)
+                this.state = {
+                    nome: this.props.nome
+                }
+                
+
+                this.clickA = this.clickA.bind(this)
+            }
+
+            clickA(){
+                if (this.state.nome =="João"){
+                    this.setState({nome : "Henrique"})
+                } else {
+                    this.setState({nome : "João"})
+                }
+            }
+
+            render(){
+                return (
+                    <div>
+                        <p>Nome: {this.state.nome}</p>
+                        <button onClick={this.clickA}>Alterar</button>
+                    </div>
+                )
+            }
+        }
+        class CompB extends React.Component {
+            constructor(props){
+                super(props)
+                this.state = {
+                    nome: this.props.nome
+                }
+
+                this.clickB = this.clickB.bind(this)
+            }
+
+            clickB(){
+                if (this.state.nome =="Ana"){
+                    this.setState({nome : "Cristina"})
+                } else {
+                    this.setState({nome : "Ana"})
+                }
+            }
+
+            render(){
+                return (
+                    <div>
+                        <p>Nome: {this.state.nome}</p>
+                        <button onClick={this.clickB}>Alterar</button>
+                    </div>
+                )
+            }
+        }
+        class CompC extends React.Component {
+            constructor(props){
+                super(props)
+                this.state = {
+                    nome: this.props.nome,
+                }
+
+                this.clickC = this.clickC.bind(this)
+                // tambem poderia se colocar a validação no onClick: onClick= {this.clickC.bind(this)}
+                // sem necessidade de colocar esse linha dentro do constructor
+            }
+
+            clickC(){
+                if (this.state.nome =="Pedro"){
+                    this.setState({nome : "Holanda"})
+                } else {
+                    this.setState({nome : "Pedro"})
+                }
+            }
+
+            render(){
+                return (
+                    <div>
+                        <p>Nome: {this.state.nome}</p>
+                        <button onClick={this.clickC}>Alterar</button>
+                    </div>
+                )
+                // tambem poderia se colocar a validação no onClick: onClick= {this.clickC.bind(this)}
+            }
+        }
+
+
+
+        ReactDOM.render(<Main />,root)
+    </script>
+</body>
+</html>

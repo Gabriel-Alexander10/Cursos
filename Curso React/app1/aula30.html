@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Formulários, Aula importante!!!-->
+</head>
+<body>
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+    
+    class App extends React.Component {
+        constructor(){
+            super()
+            this.state = {
+                username:'',
+                password:''
+            }
+        }
+
+        inserir_user = (e) => {
+            this.setState({username: e.target.value})
+        }
+
+        inserir_pass = (e) => {
+            this.setState({password: e.target.value})
+        }
+
+        submeterForm = (e) => {
+            console.log(`user:${this.state.username} pass:${this.state.password}`)
+            e.preventDefault() // evita que o form seja enviado
+        }
+
+        render(){
+            return (
+                <form onSubmit= {this.submeterForm}>
+                    <input type="text" value={this.state.username} onChange={this.inserir_user} /> <br/>
+                    <input type="password" value={this.state.password} onChange={this.inserir_pass} /> <br/>
+                    <input type="submit" value="Entrar" />
+                </form>
+            )
+        }
+    }
+
+    ReactDOM.render(<App />, document.getElementById('root'))
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ept-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+        const root = document.getElementById('root')
+        // renderizar listas em react
+        class App extends React.Component {
+
+            render(){
+                //possibilidade 1 : loop dentro do return
+                let nomes = ['Gabriel','Ana','Joaquim']
+                /*return (
+                        nomes.map(n => <h3>Olá {n}</h3>)
+                     )*/
+                //ou
+                /*
+                return (
+                    <div>
+                        {nomes.map(n => <h3>Olá {n}</h3>)}
+                    </div>
+                    )*/
+                // possibilidade 2: loop fora do return
+                let pessoas =[ {
+                    nome: "Gabriel",
+                    profissao: "Engenheiro da Computação",
+                },{
+                    nome: "Raphael",
+                    profissao: "Gestor de Negócios Internacionais",
+                },{
+                    nome: "Ariane",
+                    profissao: "Publicitaria",
+                }
+                ]
+                let final = pessoas.map(pessoa => <h3>{pessoa.nome} é um(a) {pessoa.profissao}</h3>)
+                return <div>{final}</div> // só 'return final' tambem serviria
+            }
+        }
+
+        ReactDOM.render(<App />,root)
+
+    </script>
+</body>
+</html>

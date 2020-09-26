@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Básico treino aula 1 a 6</title>
+    <link rel="stylesheet" href="estilo.css">
+    <!-- Desafio: criar o modelo do CursoJS com functions e classes components e props :)-->
+    <!-- Concluído!!! -->
+</head>
+
+<body id="modelo">
+
+    <!--<div id="modelo"></div>-->
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+        const modelo = document.querySelector('#modelo')
+        function Header1(atributo) {
+            return (
+                <header>
+                    <h1>Olá, {atributo.nome}!</h1>
+                </header>
+            )
+        }
+        // padrão -> class blabla extends React.Component -> significa que a classe é
+        // uma extensão ("da classe? provavelmente sim") de React.Component
+        class Section1 extends React.Component {
+            render(){
+                return (
+                    <section>
+                        <div>Primeiro exercício de React do {this.props.nome}</div>
+                        <hr/>
+                        <div>Genial!</div>
+                    </section>
+                )
+            }
+        }
+        class Footer1 extends React.Component {
+            render(){
+                return (
+                    <footer>
+                        &copy; {this.props.compania}
+                    </footer>
+                )
+            }
+        }
+
+        class Main extends React.Component{
+            render(){
+                return (
+                    <div>
+                        <Header1 nome="Gabriel"/>
+                        <Section1 nome="Gabriel"/>
+                        <Footer1 compania="Alexander International"/>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Main compania="Alexander International" nome="Gabriel" />,modelo)
+        // não herdam atributos, tem que colocar diretamente!!!
+    </script>
+    
+</body>
+
+</html>

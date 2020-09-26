@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Estilos inline, verificar aula 10</p>
+    <p>Ps: só se pode adicionar um objeto no style dentro do jsx</p>
+    <div id="oi"></div>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+        // ex:
+        class App extends React.Component {
+            render(){
+                let objeto1 = {color:'red'}
+                let objeto2 = {font : '2em'}
+                return(
+                    <div style = {objeto1}>Olá</div>
+                )
+                // o style só aceita um!!!
+            }
+        }
+        ReactDOM.render(<App />,document.getElementById('oi'))
+    </script>
+</body>
+</html>

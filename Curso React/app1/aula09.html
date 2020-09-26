@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .c1{
+            font: Arial 15pt normal;
+            font-weight: 400;
+            background-color: rgb(23, 145, 161);
+            color: white;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+        // relógio em site
+        function Tempo(){
+            const root = document.querySelector('#root')
+            const conteudo = (
+                <div className='c1'>
+                    <p>Novo teste</p>
+                    <p>O tempo atual é {new Date().toLocaleTimeString()}</p>
+                </div>
+            )
+            ReactDOM.render(conteudo,root)
+        }
+        setInterval(Tempo,1000) // setInterval(Tempo(),1000) também funciona
+    </script>
+</body>
+</html>

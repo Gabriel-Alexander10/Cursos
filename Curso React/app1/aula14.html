@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="root"></div>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+    // criar evetnos: aula importante e complexa :)
+        const root = document.getElementById('root')
+
+        class App extends React.Component {
+            // por enquanto o constructor não precisa de props mas colocarei
+            constructor(props){
+                super(props)
+
+                this.state = {
+                    nome: "Raphael"
+                }
+
+                // declaração para que a classe do react reconheça a função do evento
+                this.clicou = this.clicou.bind(this)
+                // tipo um selo de validação para que o método funcione
+
+            }
+            // dentro de classes não se usa "function" para declarar uma função
+            // pois ela é um método da classe
+            
+            clicou() {
+                // para mudar um state, usar o método setState()
+                this.setState({nome:'Gabriel'})
+            }
+
+            render(){
+                return(
+                    <div>
+                        <p>Nome: {this.state.nome}</p>
+                        <button onClick = {this.clicou}>Clique</button>
+                    </div>
+                )
+            }
+            // sintaxe do evento de click : onClick = {this.função} sem parenteses!!!
+        }
+        
+        ReactDOM.render(<App />,root)
+
+    </script>
+</body>
+</html>

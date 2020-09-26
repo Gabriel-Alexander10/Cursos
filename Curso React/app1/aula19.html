@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+        const root = document.getElementById('root')
+
+class Pai extends React.Component {
+    metodo = (texto) => {
+        console.log(texto)
+    }
+
+    render(){
+        return (
+            <div>
+                <p>Texto do Pai</p>
+                <FilhoA metodo = {this.metodo} />
+            </div>
+        )
+    }
+}
+
+class FilhoA extends React.Component {
+    render(){
+        return (
+            <div>
+                <button onClick = {() => this.props.metodo('texto passado pelo filho')}>Clique1</button>
+            </div>
+        )
+    }
+    // passando texto para o pai
+}
+
+
+ReactDOM.render(<Pai />,root)
+
+    </script>
+</body>
+</html>

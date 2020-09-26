@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+        // fases de vida de um componente
+        class App extends React.Component {
+            constructor(){
+                super()
+                console.log('construido')
+                // construção
+                this.state = {
+                    nome: 'João'
+                }
+            }
+
+            componentDidMount(){
+                console.log('mountado')
+                // montagem do componente finalizada
+            }
+
+
+            alterar = () => {
+                console.log('alterando (update)')
+                // fase de update
+                this.setState({nome: 'Joaquim'})
+            }
+
+            render(){
+                console.log('renderizado')
+                // renderização
+                return(
+                    <div>
+                    <p>Olá, {this.state.nome}</p>
+                    <button onClick= {this.alterar}>Alterar</button>
+                    </div>
+                )
+            }
+
+
+        }
+
+
+        ReactDOM.render(<App />,document.getElementById('root'))
+    </script>
+</body>
+</html>

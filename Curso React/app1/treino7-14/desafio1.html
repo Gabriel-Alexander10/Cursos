@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="estilo.css">
+    <!-- Criar texto que muda de cor de acordo com o tempo! -->
+</head>
+<body>
+    <body>
+        <div id="modelo"></div>
+        <!--<div id="modelo"></div>-->
+    
+        <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    
+        <script type="text/babel">
+            const modelo = document.querySelector('#modelo')
+            function Header1(atributo) {
+                return (
+                    <header>
+                        <h1 style = {atributo.estilo}>Olá, {atributo.nome}!</h1>
+                    </header>
+                )
+            }
+            // padrão -> class blabla extends React.Component -> significa que a classe é
+            // uma extensão ("da classe? provavelmente sim") de React.Component
+            class Section1 extends React.Component {
+                render(){
+                    return (
+                        <section>
+                            <div>Primeiro exercício de React do {this.props.nome}</div>
+                            <hr/>
+                            <div>Genial!</div>
+                        </section>
+                    )
+                }
+            }
+            class Footer1 extends React.Component {
+                render(){
+                    return (
+                        <footer>
+                            &copy; {this.props.compania}
+                        </footer>
+                    )
+                }
+            }
+    
+            function Main (){
+                let L=[{ color:'red'  }, { color:'green' }, { color:'blue' }]
+                let i=0
+                function Tempo(){
+                    let t = new Date().getSeconds()
+                    console.log(t)
+                    if (t%6>=0 && t%6<=1){
+                        i=0
+                    } else if (t%6<=3){
+                        i=1
+                    } else {
+                        i=2
+                    }
+                }
+                Tempo()
+                return (
+                    <div>
+                        <Header1 nome="Gabriel" estilo={L[i]}/>
+                        <Section1 nome="Gabriel"/>
+                        <Footer1 compania="Alexander International"/>
+                    </div>
+                )
+            }
+            function Main2(){
+                ReactDOM.render(<Main compania={"Alexander International"} nome={"Gabriel"} />,modelo)
+            }
+            setInterval(Main2,1000)
+
+            // Done :)
+        </script> 
+</body>
+</html>

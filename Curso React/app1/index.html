@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Básico</title>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+    // importante colocar o type e importar o babel ali em cima para que o JSX funcione
+        const root = document.querySelector("#root")
+        let nome = "Gabriel Alexander"
+        ReactDOM.render(<h1>O meu nome é {nome}</h1>,root) // colocar texto com variavel no html!!!
+    </script>
+    
+</body>
+
+</html>
